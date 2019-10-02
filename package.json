@@ -1,0 +1,22 @@
+{
+  "name": "guildbankbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buffinzz/guildBankBot.git"
+  },
+  "author": "buffinzz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buffinzz/guildBankBot/issues"
+  },
+  "homepage": "https://github.com/buffinzz/guildBankBot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
