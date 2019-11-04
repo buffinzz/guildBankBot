@@ -18,6 +18,7 @@ async function main () {
    
     // Fetch the list of GCE zones within a project.
     const res = await compute.zones.list({ project, auth: authClient });
+    console.log('Commands');
     console.log(res.data);
   }
 

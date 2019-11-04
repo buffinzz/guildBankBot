@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const fs=require(‘fs’); 
 
 let commands = require("./commands.js");
 
@@ -9,8 +8,7 @@ const client = new Discord.Client();
  
 
 client.on('ready', () => {
-    fs.writeFile(process.env.GOOGLE_APPLICATION_CREDENTIALS, process.env.GOOGLE_CONFIG, (err) => {});
-    console.log('preinstall');
+
     console.log('I am ready!');
     
 
