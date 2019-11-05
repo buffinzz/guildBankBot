@@ -38,7 +38,7 @@ client.on('message', message => {
 const compute = google.compute('v1');
  
 async function main () {
-    fs.writeFile('credentials.json', process.env.GOOGLE_FILE, (err) => {
+    fs.writeFile('credentials.json', process.env.GOOGLE_CREDS, (err) => {
         if (err) throw err;
         console.log('Saved!');
     });
