@@ -60,7 +60,7 @@ const jwt = new google.auth.JWT(
   null,
   process.env.GOOGLE_PRIVATE_KEY,
   SCOPES
-)
+);
 const calendar = google.calendar({version: 'v3', jwt});
     calendar.events.list({
       calendarId: process.env.GOOGLE_CAL_ID,
@@ -81,6 +81,7 @@ const calendar = google.calendar({version: 'v3', jwt});
         console.log('No upcoming events found.');
       }
     });
+}
 
 main().catch(console.error);
 // THIS  MUST  BE  THIS  WAY
