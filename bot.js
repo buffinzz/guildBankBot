@@ -45,16 +45,16 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-fs.writeFile(`${__dirname}/credentials.json`, JSON.stringify(process.env.GOOGLE_FILE), (err) => {
-    if (err) throw err;
-    console.log('Saved!');
-});
+// fs.writeFile(`${__dirname}/credentials.json`, process.env.GOOGLE_FILE, (err) => {
+//     if (err) throw err;
+//     console.log('Saved!');
+// });
 //const creds = JSON.stringify(process.env.GOOGLE_FILE);
 // Load client secrets from a local file.
 fs.readFile(`${__dirname}/credentials.json`, (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
+  //if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Calendar API.
-  authorize(JSON.parse(content), listEvents);
+  authorize(JSON.parse(process.env.GOOGLE_FILE), listEvents);
 });
 
 /**
