@@ -45,10 +45,11 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-fs.writeFile('credentials.json', JSON.stringify(process.env.GOOGLE_CREDS), (err) => {
+fs.writeFile('credentials.json', JSON.stringify(process.env.GOOGLE_FILE), (err) => {
     if (err) throw err;
     console.log('Saved!');
 });
+//const creds = JSON.stringify(process.env.GOOGLE_FILE);
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
