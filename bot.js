@@ -42,21 +42,51 @@ async function main () {
         if (err) throw err;
         console.log('Saved!');
     });
+    const key = require('./credentials.json')
   // This method looks for the GCLOUD_PROJECT and GOOGLE_APPLICATION_CREDENTIALS
   // environment variables.
-  const auth = new google.auth.GoogleAuth({
-    // Scopes can be specified either as an array or as a single, space-delimited string.
-    scopes: ['https://www.googleapis.com/auth/calendar']
-  });
-  const authClient = await auth.getClient();
+//   const auth = new google.auth.GoogleAuth({
+//     // Scopes can be specified either as an array or as a single, space-delimited string.
+//     scopes: ['https://www.googleapis.com/auth/calendar']
+//   });
+//   const authClient = await auth.getClient();
  
-  // obtain the current project Id
-  const project = await auth.getProjectId();
- 
+//   // obtain the current project Id
+//   const project = await auth.getProjectId();
+//const scopes = 'https://www.googleapis.com/auth/calendar'
+const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+const jwt = new google.auth.JWT(
+  process.env.GOOGLE_CLIENT_EMAIL,
+  null,
+  process.env.GOOGLE_PRIVATE_KEY,
+  SCOPES
+)
   // Fetch the list of GCE zones within a project.
   //const res = await compute.zones.list({ project, auth: authClient });
-  console.log(authClient);
-}
+  jwt.authorize((err, response) => {
+    google.calendar({version: 'v3', jwt});
+    calendar.events.list({
+      calendarId: process.env.GOOGLE_CAL_ID,
+      timeMin: (new Date()).toISOString(),
+      maxResults: 10,
+      singleEvents: true,
+      orderBy: 'startTime',
+    }, (err, res) => {
+      if (err) return console.log('The API returned an error: ' + err);
+      const events = res.data.items;
+      if (events.length) {
+        console.log('Upcoming 10 events:');
+        events.map((event, i) => {
+          const start = event.start.dateTime || event.start.date;
+          console.log(`${start} - ${event.summary}`);
+        });
+      } else {
+        console.log('No upcoming events found.');
+      }
+    });
+  
+});
+
 main().catch(console.error);
 // THIS  MUST  BE  THIS  WAY
 
