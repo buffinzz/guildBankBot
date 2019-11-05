@@ -35,7 +35,7 @@ client.on('message', message => {
 // google.options({
 //     auth: oauth2Client
 // });
-const compute = google.compute('v1');
+//const compute = google.compute('v1');
  
 async function main () {
     fs.writeFile('credentials.json', process.env.GOOGLE_CREDS, (err) => {
@@ -46,7 +46,7 @@ async function main () {
   // environment variables.
   const auth = new google.auth.GoogleAuth({
     // Scopes can be specified either as an array or as a single, space-delimited string.
-    scopes: ['https://www.googleapis.com/auth/compute']
+    scopes: ['https://www.googleapis.com/auth/calendar']
   });
   const authClient = await auth.getClient();
  
@@ -54,8 +54,8 @@ async function main () {
   const project = await auth.getProjectId();
  
   // Fetch the list of GCE zones within a project.
-  const res = await compute.zones.list({ project, auth: authClient });
-  console.log(res.data);
+  //const res = await compute.zones.list({ project, auth: authClient });
+  console.log(authClient);
 }
 main().catch(console.error);
 // THIS  MUST  BE  THIS  WAY
