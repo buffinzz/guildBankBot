@@ -5,7 +5,8 @@ const {google} = require('googleapis');
 
 const client = new Discord.Client();
 
- 
+const fs=require('fs');
+
 
 client.on('ready', () => {
 
@@ -37,6 +38,10 @@ client.on('message', message => {
 const compute = google.compute('v1');
  
 async function main () {
+    fs.writeFile('credentials.json', process.env.GOOGLE_FILE, (err) => {
+        if (err) throw err;
+        console.log('Saved!');
+    });
   // This method looks for the GCLOUD_PROJECT and GOOGLE_APPLICATION_CREDENTIALS
   // environment variables.
   const auth = new google.auth.GoogleAuth({
