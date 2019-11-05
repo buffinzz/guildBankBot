@@ -38,7 +38,7 @@ let jwtClient = new google.auth.JWT(
 //authenticate request
 jwtClient.authorize(function (err, tokens) {
 if (err) {
-console.log(err);
+console.log('error');
 return;
 } else {
 console.log("Successfully connected!");
