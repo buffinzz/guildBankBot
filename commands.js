@@ -1,9 +1,6 @@
 const fs=require('fs');
 
 const path = process.env.GOOGLE_FILE;
-const fs=require('fs');
-
-const path = process.env.GOOGLE_FILE;
 
 try {
     if (fs.existsSync(path)) {
