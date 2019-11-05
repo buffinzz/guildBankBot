@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 //require("./credentials.js");
 
 const {google} = require('googleapis');
-const compute = google.compute('v1');
-
 
 const client = new Discord.Client();
 
@@ -54,6 +52,7 @@ async function main () {
   const res = await compute.zones.list({ project, auth: authClient });
   console.log(res.data);
 }
+main().catch(console.error);
 // THIS  MUST  BE  THIS  WAY
 
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
