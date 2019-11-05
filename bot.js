@@ -61,10 +61,7 @@ const jwt = new google.auth.JWT(
   process.env.GOOGLE_PRIVATE_KEY,
   SCOPES
 )
-  // Fetch the list of GCE zones within a project.
-  //const res = await compute.zones.list({ project, auth: authClient });
-  jwt.authorize((err, response) => {
-    const calendar = google.calendar({version: 'v3', jwt});
+const calendar = google.calendar({version: 'v3', jwt});
     calendar.events.list({
       calendarId: process.env.GOOGLE_CAL_ID,
       timeMin: (new Date()).toISOString(),
@@ -84,8 +81,6 @@ const jwt = new google.auth.JWT(
         console.log('No upcoming events found.');
       }
     });
-  
-});
 
 main().catch(console.error);
 // THIS  MUST  BE  THIS  WAY
