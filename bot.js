@@ -28,21 +28,13 @@ client.on('message', message => {
 
 });
 
-//let privatekey = require(process.env.GOOGLE_FILE);
-// configure a JWT auth client
-let jwtClient = new google.auth.JWT(
-    process.env.GOOGLE_CLIENT_EMAIL,
-    null,
-    process.env.GOOGLE_PRIVATE_KEY,
-    ['https://www.googleapis.com/auth/calendar']);
-//authenticate request
-jwtClient.authorize(function (err, tokens) {
-if (err) {
-console.log('error');
-return;
-} else {
-console.log("Successfully connected!");
-}
+const oauth2Client = new google.auth.OAuth2(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_REDIRECT_URL
+  );
+google.options({
+    auth: oauth2Client
 });
 // THIS  MUST  BE  THIS  WAY
 
