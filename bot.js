@@ -42,7 +42,7 @@ async function main () {
         if (err) throw err;
         console.log('Saved!');
     });
-    const key = require('./credentials.json')
+    //const key = require('credentials.json')
   // This method looks for the GCLOUD_PROJECT and GOOGLE_APPLICATION_CREDENTIALS
   // environment variables.
 //   const auth = new google.auth.GoogleAuth({
