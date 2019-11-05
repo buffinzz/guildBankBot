@@ -64,7 +64,7 @@ const jwt = new google.auth.JWT(
   // Fetch the list of GCE zones within a project.
   //const res = await compute.zones.list({ project, auth: authClient });
   jwt.authorize((err, response) => {
-    google.calendar({version: 'v3', jwt});
+    const calendar = google.calendar({version: 'v3', jwt});
     calendar.events.list({
       calendarId: process.env.GOOGLE_CAL_ID,
       timeMin: (new Date()).toISOString(),
