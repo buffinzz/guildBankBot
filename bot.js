@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 //require("./credentials.js");
 
-let google = require('googleapis');
+const {google} = require('googleapis');
 
 
 
