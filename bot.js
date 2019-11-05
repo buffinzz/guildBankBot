@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-require("./credentials.js");
+//require("./credentials.js");
 
 let google = require('googleapis');
-let privatekey = require(process.env.GOOGLE_FILE);
+
 
 
 const client = new Discord.Client();
@@ -28,12 +28,12 @@ client.on('message', message => {
 
 });
 
- 
+//let privatekey = require(process.env.GOOGLE_FILE);
 // configure a JWT auth client
 let jwtClient = new google.auth.JWT(
-    privatekey.client_email,
+    process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    privatekey.private_key,
+    process.env.GOOGLE_PRIVATE_KEY,
     ['https://www.googleapis.com/auth/calendar']);
 //authenticate request
 jwtClient.authorize(function (err, tokens) {
